@@ -600,3 +600,28 @@ async function addProduct() {
     console.log("Inserted:", data);
     loadData(); // 🔥 refresh list
   }
+async function addCustomProduct() {
+  const name = document.getElementById("name").value;
+  const price = document.getElementById("price").value;
+
+  if (!name || !price) {
+    alert("Enter all fields");
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from("products")
+    .insert([
+      { name: name, price: parseInt(price) }
+    ]);
+
+  if (error) {
+    console.log("Error:", error);
+  } else {
+    console.log("Added:", data);
+    loadData();
+
+    document.getElementById("name").value = "";
+    document.getElementById("price").value = "";
+  }
+}
