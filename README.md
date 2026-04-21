@@ -1,0 +1,2 @@
+# smart-invt
+SMART INVENTORY CONTROL WITH AI
