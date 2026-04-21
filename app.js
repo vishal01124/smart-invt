@@ -629,3 +629,23 @@ async function addCustomProduct() {
     document.getElementById("price").value = "";
   }
 }
+async function editProduct(id, oldName, oldPrice) {
+  const newName = prompt("Enter new name:", oldName);
+  const newPrice = prompt("Enter new price:", oldPrice);
+
+  if (!newName || !newPrice) return;
+
+  const { error } = await supabaseClient
+    .from("products")
+    .update({
+      name: newName,
+      price: parseInt(newPrice)
+    })
+    .eq("id", id);
+
+  if (error) {
+    console.log("Update Error:", error);
+  } else {
+    loadData(); // refresh list
+  }
+}
