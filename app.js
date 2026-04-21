@@ -581,7 +581,11 @@ async function loadData() {
 
   data.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = item.name + " - ₹" + item.price;
+    li.innerHTML = `
+  ${item.name} - ₹${item.price}
+  <button onclick="editProduct(${item.id}, '${item.name}', ${item.price})">✏️</button>
+  <button onclick="deleteProduct(${item.id})">❌</button>
+`;
     list.appendChild(li);
   });
 }
