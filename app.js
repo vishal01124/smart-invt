@@ -587,3 +587,16 @@ async function loadData() {
 }
 
 loadData();
+async function addProduct() {
+  const { data, error } = await supabaseClient
+    .from("products")
+    .insert([
+      { name: "Dolo 650", price: 30 }
+    ]);
+
+  if (error) {
+    console.log("Insert Error:", error);
+  } else {
+    console.log("Inserted:", data);
+    loadData(); // 🔥 refresh list
+  }
