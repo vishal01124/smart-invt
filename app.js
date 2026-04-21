@@ -584,10 +584,7 @@ async function loadData() {
 li.innerHTML = `${item.name} - ₹${item.price}
 <button onclick="editProduct(${item.id}, \`${item.name}\`, ${item.price})">✏️</button>
 <button onclick="deleteProduct(${item.id})">❌</button>`;
-    list.appendChild(li);
-  });
 }
-
 loadData();
 async function addProduct() {
   const { data, error } = await supabaseClient
