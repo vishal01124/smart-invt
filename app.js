@@ -581,9 +581,9 @@ async function loadData() {
 
   data.forEach(item => {
     const li = document.createElement("li");
-    li.innerHTML = `
+  li.innerHTML = `
   ${item.name} - ₹${item.price}
-  <button onclick="editProduct(${item.id}, '${item.name}', ${item.price})">✏️</button>
+  <button onclick="editProduct(${item.id}, \`${item.name}\`, ${item.price})">✏️</button>
   <button onclick="deleteProduct(${item.id})">❌</button>
 `;
     list.appendChild(li);
