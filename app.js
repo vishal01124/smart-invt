@@ -566,3 +566,24 @@ A.printBill=function(id){
 
 // Start
 A.init();
+async function loadData() {
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("*");
+
+  if (error) {
+    console.log("Error:", error);
+    return;
+  }
+
+  const list = document.getElementById("product-list");
+  list.innerHTML = "";
+
+  data.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item.name + " - ₹" + item.price;
+    list.appendChild(li);
+  });
+}
+
+loadData();
